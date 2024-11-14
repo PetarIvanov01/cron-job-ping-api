@@ -1,8 +1,5 @@
-const cron = require("node-cron");
-
-let previousStatus = null;
-let previousTimestamp = new Date().toISOString();
-cron.schedule("*/10 * * * *", async () => {
+pingApi();
+async function pingApi() {
   try {
     const response = await fetch(
       "https://drizzleexpress-api.onrender.com/health"
@@ -21,4 +18,4 @@ cron.schedule("*/10 * * * *", async () => {
   } catch (error) {
     console.error("Error fetching server health:", error);
   }
-});
+}
