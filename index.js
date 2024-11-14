@@ -4,17 +4,12 @@ async function pingApi() {
     const response = await fetch(
       "https://drizzleexpress-api.onrender.com/health"
     );
-    const currentStatus = await response.json();
-    const currentTimestamp = new Date().toISOString();
+    const status = await response.json();
+    const timestamp = new Date().toISOString();
     console.log({
-      previousTimestamp,
-      currentTimestamp,
-      previousStatus,
-      currentStatus,
+      status,
+      timestamp,
     });
-
-    previousStatus = currentStatus;
-    previousTimestamp = currentTimestamp;
   } catch (error) {
     console.error("Error fetching server health:", error);
   }
